@@ -1,0 +1,454 @@
+:root {
+    --kenya-black: #111111;
+    --kenya-red: #bb0000;
+    --kenya-green: #006600;
+    --kenya-white: #ffffff;
+    --bg-gray: #f4f6f9;
+    --card-bg: #ffffff;
+    --border-color: #dce1e7;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  body {
+    background-color: var(--bg-gray);
+    color: var(--text-main);
+    line-height: 1.5;
+  }
+  
+  /* Kenyan Flag Top Bar */
+  .flag-bar {
+    display: flex;
+    height: 8px;
+    width: 100%;
+  }
+  .flag-bar .black { flex: 3; background: var(--kenya-black); }
+  .flag-bar .white { flex: 0.4; background: var(--kenya-white); }
+  .flag-bar .red { flex: 3; background: var(--kenya-red); }
+  .flag-bar .green { flex: 3; background: var(--kenya-green); }
+  
+  /* Header & Navigation */
+  .app-header {
+    background: var(--kenya-black);
+    color: var(--kenya-white);
+    padding: 1.5rem 1rem 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .header-content h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .header-content p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .tab-btn {
+    background: #262626;
+    color: #e2e8f0;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .tab-btn:hover {
+    background: #3f3f46;
+  }
+  
+  .tab-btn.active {
+    background: var(--bg-gray);
+    color: var(--kenya-green);
+    border-top: 3px solid var(--kenya-red);
+  }
+  
+  /* Layout & Cards */
+  .container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+    color: var(--kenya-black);
+  }
+  
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  /* Forms & Inputs */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--kenya-green);
+  }
+  
+  /* Buttons */
+  .btn {
+    padding: 0.75rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  
+  .primary-btn {
+    background: var(--kenya-green);
+    color: white;
+  }
+  
+  .secondary-btn {
+    background: #e2e8f0;
+    color: var(--text-main);
+  }
+  
+  .success-btn {
+    background: var(--kenya-black);
+    color: white;
+    border-bottom: 3px solid var(--kenya-green);
+  }
+  
+  .danger-btn {
+    background: var(--kenya-red);
+    color: white;
+  }
+  
+  .small-btn {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  }
+  
+  /* Quick Test ID Chips */
+  .demo-ids {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-color);
+    font-size: 0.88rem;
+  }
+  
+  .chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .id-chip {
+    background: #eef2ff;
+    color: #1e40af;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid #bfdbfe;
+  }
+  
+  .id-chip:hover {
+    background: #dbeafe;
+  }
+  
+  .id-chip.warning {
+    background: #fef2f2;
+    color: #991b1b;
+    border-color: #fecaca;
+  }
+  
+  /* Ballot Wizard */
+  .voter-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+  }
+  
+  .voter-banner span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--kenya-green);
+  }
+  
+  .progress-wrapper {
+    margin-bottom: 1.5rem;
+  }
+  
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  
+  .progress-track {
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--kenya-black), var(--kenya-red), var(--kenya-green));
+    transition: width 0.35s ease;
+  }
+  
+  .ballot-heading {
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+  }
+  
+  .candidates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .candidate-card {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  
+  .candidate-card:hover {
+    border-color: #94a3b8;
+    transform: translateY(-2px);
+  }
+  
+  .candidate-card.selected {
+    border-color: var(--kenya-green);
+    background: #f0fdf4;
+    box-shadow: 0 4px 12px rgba(0, 102, 0, 0.12);
+  }
+  
+  .candidate-card.spoilt.selected {
+    border-color: var(--kenya-red);
+    background: #fef2f2;
+  }
+  
+  .party-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: #e2e8f0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .candidate-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  
+  .wizard-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  /* Review List */
+  .review-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .review-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+  }
+  
+  /* Live Tallying Center */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-box {
+    background: var(--card-bg);
+    padding: 1.25rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--kenya-green);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  
+  .stat-value {
+    font-size: 1.65rem;
+    color: var(--kenya-black);
+  }
+  
+  .tally-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  .tally-card {
+    background: var(--card-bg);
+    padding: 1.25rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+  }
+  
+  .tally-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--bg-gray);
+  }
+  
+  .tally-row {
+    margin-bottom: 0.85rem;
+  }
+  
+  .tally-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  
+  .bar-bg {
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  .bar-fill {
+    height: 100%;
+    background: var(--kenya-green);
+    transition: width 0.5s ease;
+  }
+  
+  .bar-fill.spoilt {
+    background: var(--kenya-red);
+  }
+  
+  /* Toast Notification */
+  .toast {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+    color: white;
+    animation: fadeIn 0.25s ease;
+  }
+  
+  .toast.success { background: var(--kenya-green); }
+  .toast.error { background: var(--kenya-red); }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  

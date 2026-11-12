@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Republic of Kenya | Interactive Election Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top Kenyan Flag Accent Bar -->
+  <div class="flag-bar">
+    <span class="black"></span>
+    <span class="white"></span>
+    <span class="red"></span>
+    <span class="white"></span>
+    <span class="green"></span>
+  </div>
+
+  <header class="app-header">
+    <div class="header-content">
+      <h1>🇰🇪 IEBC Digital Voting & Tallying Simulation</h1>
+      <p>Interactive 6-Tier Kenyan General Election Portal</p>
+    </div>
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="vote-section">🗳️ Cast Vote</button>
+      <button class="tab-btn" data-tab="register-section">📝 Voter Registration</button>
+      <button class="tab-btn" data-tab="results-section">📊 Live Tallying Center</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Toast Notification Banner -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- SECTION 1: VOTING BOOTH -->
+    <section id="vote-section" class="tab-content active">
+      <!-- Step A: KIEMS Verification -->
+      <div id="kiems-card" class="card">
+        <h2>KIEMS Kit Biometric & ID Verification</h2>
+        <p class="subtitle">Enter your 8-digit Kenyan National ID to unlock your 6 electronic ballots.</p>
+
+        <div class="form-group">
+          <label for="voter-id-input">National ID Number</label>
+          <input type="text" id="voter-id-input" maxlength="8" placeholder="e.g., 12345678" />
+        </div>
+        <button id="verify-btn" class="btn primary-btn">Verify Voter Identity</button>
+
+        <div class="demo-ids">
+          <strong>Quick Test IDs (Click to autofill):</strong>
+          <div class="chip-container">
+            <span class="id-chip" data-id="12345678">12345678 (Wanjiku - Nairobi)</span>
+            <span class="id-chip" data-id="23456789">23456789 (Otieno - Homa Bay)</span>
+            <span class="id-chip" data-id="34567890">34567890 (Amina - Mombasa)</span>
+            <span class="id-chip" data-id="45678901">45678901 (Kiprop - Uasin Gishu)</span>
+            <span class="id-chip warning" data-id="56789012">56789012 (Mutua - Age 17)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step B: 6-Tier Ballot Wizard (Hidden until verified) -->
+      <div id="ballot-wizard" class="card hidden">
+        <div class="voter-banner">
+          <div>
+            <strong id="active-voter-name">Voter Name</strong>
+            <span id="active-voter-meta">County | ID</span>
+          </div>
+          <button id="cancel-vote-btn" class="btn small-btn danger-btn">Exit Booth</button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-wrapper">
+          <div class="progress-header">
+            <span id="step-label">Ballot 1 of 6: President</span>
+            <span id="progress-percent">0% Complete</span>
+          </div>
+          <div class="progress-track">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- Dynamic Candidates Grid -->
+        <h3 id="ballot-title" class="ballot-heading">Select Candidate for President</h3>
+        <div id="candidates-grid" class="candidates-grid"></div>
+
+        <div class="wizard-controls">
+          <button id="prev-ballot-btn" class="btn secondary-btn" disabled>← Previous Ballot</button>
+          <button id="next-ballot-btn" class="btn primary-btn" disabled>Next Ballot →</button>
+        </div>
+      </div>
+
+      <!-- Step C: Ballot Review & Final Submission -->
+      <div id="review-card" class="card hidden">
+        <h2>Review Your 6 Ballot Selections</h2>
+        <p class="subtitle">Confirm your choices carefully before dropping them into the ballot boxes.</p>
+        <div id="review-list" class="review-list"></div>
+        <div class="wizard-controls">
+          <button id="back-to-edit-btn" class="btn secondary-btn">← Change Choices</button>
+          <button id="submit-ballots-btn" class="btn success-btn">✅ Cast All 6 Ballots</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: VOTER REGISTRATION -->
+    <section id="register-section" class="tab-content hidden">
+      <div class="card">
+        <h2>IEBC Continuous Voter Registration</h2>
+        <p class="subtitle">Register a new citizen onto the digital roll (Must be 18 years or older).</p>
+
+        <form id="register-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="reg-id">8-Digit National ID</label>
+              <input type="text" id="reg-id" maxlength="8" required placeholder="e.g., 87654321" />
+            </div>
+            <div class="form-group">
+              <label for="reg-name">Full Official Name</label>
+              <input type="text" id="reg-name" required placeholder="e.g., Mwangi Njoroge" />
+            </div>
+            <div class="form-group">
+              <label for="reg-age">Age (Years)</label>
+              <input type="number" id="reg-age" min="1" max="120" required placeholder="18+" />
+            </div>
+            <div class="form-group">
+              <label for="reg-county">County</label>
+              <select id="reg-county" required>
+                <option value="">-- Select County --</option>
+                <option value="Nairobi">Nairobi</option>
+                <option value="Homa Bay">Homa Bay</option>
+                <option value="Mombasa">Mombasa</option>
+                <option value="Kisumu">Kisumu</option>
+                <option value="Nakuru">Nakuru</option>
+                <option value="Uasin Gishu">Uasin Gishu</option>
+                <option value="Machakos">Machakos</option>
+                <option value="Kiambu">Kiambu</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn primary-btn">Register Voter</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SECTION 3: LIVE TALLYING CENTER -->
+    <section id="results-section" class="tab-content hidden">
+      <div class="stats-row">
+        <div class="stat-box">
+          <span class="stat-label">Registered Voters</span>
+          <strong id="stat-registered" class="stat-value">0</strong>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Total Votes Cast</span>
+          <strong id="stat-cast" class="stat-value">0</strong>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Voter Turnout</span>
+          <strong id="stat-turnout" class="stat-value">0.0%</strong>
+        </div>
+      </div>
+
+      <div class="tally-header">
+        <h2>National Tallying Center (Form 34A/B/C Live Stream)</h2>
+        <button id="reset-election-btn" class="btn small-btn danger-btn">Reset All Election Data</button>
+      </div>
+
+      <div id="results-container" class="results-grid"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
